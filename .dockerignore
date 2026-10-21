@@ -1,6 +1,7 @@
 # 版本控制与 IDE 元数据
 .git/
 .gitignore
+.github/
 .idea/
 .jbeval/
 
