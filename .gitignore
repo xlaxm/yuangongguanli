@@ -1,0 +1,55 @@
+# 本地环境与 Secret
+.env
+.env.*
+!.env.example
+.env.docker
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Python 环境、缓存与测试产物
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# 构建产物
+build/
+dist/
+*.egg-info/
+
+# 本地运行数据与数据库文件
+runtime/
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+data/
+
+# 公司内部知识资料，仅通过受控渠道提供，不进入 Git 仓库
+knowledge/
+
+# 派生向量索引，保留目录占位文件
+vector_store/*
+!vector_store/.gitkeep
+
+# IDE、系统文件与日志
+.idea/
+.vscode/
+.jbeval/
+.DS_Store
+Thumbs.db
+*.log
+tmp/
+
+# 个人训练文档不属于应用交付物
+training_notes/
+

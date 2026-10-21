@@ -1,0 +1,93 @@
+[project]
+name = "day06-multi-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "李昀飞", email = "2716607552@qq.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard]==0.142.2",
+    "langchain>=1.4,<2.0",
+    "langchain-core>=1.6,<2.0",
+    "langgraph>=1.2,<2.0",
+    "langchain-openai>=1.0,<2.0",
+    "langchain-huggingface[full]>=1.0,<2.0",
+    "langchain-chroma>=1.0,<2.0",
+    "langchain-text-splitters>=1.0,<2.0",
+    "chromadb>=1.0,<2.0",
+    "python-dotenv>=1.0,<2.0",
+    "pypdf>=6.0,<7.0",
+    "python-docx>=1.1,<2.0",
+    "beautifulsoup4>=4.12,<5.0",
+    "pymupdf>=1.24,<2.0",
+    "rapidocr>=3.9,<4.0",
+    "onnxruntime>=1.20,<2.0",
+    "SQLAlchemy>=2.0,<2.1",
+    "PyMySQL>=1.1,<2.0",
+    "langgraph-checkpoint-sqlite>=3.0,<4.0",
+    "aiosqlite>=0.20,<1.0",
+    "pwdlib[argon2]>=0.3,<1.0",
+    "PyJWT>=2.10,<3.0",
+    "python-multipart>=0.0.20,<1.0",
+]
+
+[project.scripts]
+day06-multi-agent = "day06_multi_agent:main"
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+lint = [
+    "mypy>=2.4.0",
+    "ruff>=0.17.1",
+]
+security = [
+    "detect-secrets>=1.5.0",
+]
+test = [
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B", "UP"]
+
+[tool.mypy]
+python_version = "3.13"
+check_untyped_defs = true
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+
+[tool.pytest.ini_options]
+minversion = "9.0"
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = [
+    "-ra",
+    "--strict-config",
+    "--strict-markers",
+    "--cov=main",
+    "--cov-report=term-missing",
+    "--cov-report=xml",
+]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+show_missing = true

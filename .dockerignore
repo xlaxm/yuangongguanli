@@ -1,0 +1,47 @@
+# 版本控制与 IDE 元数据
+.git/
+.gitignore
+.idea/
+.jbeval/
+
+# 本地 Python 环境与缓存
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+dist/
+build/
+
+# 本地运行数据和可重建索引
+runtime/
+vector_store/
+data/
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+
+# Secret 与本地环境文件
+.env
+.env.docker
+.env.*
+!.env.example
+.secrets.baseline
+
+# 本地服务、日志与临时文件
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Compose 文件将在下一阶段创建；本次不进入镜像构建上下文。
+docker-compose.yml
+compose.yml
+
+# 个人训练文档，不属于应用交付物
+training_notes/

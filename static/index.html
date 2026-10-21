@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="多 Agent 新员工智能助手">
+  <title>新员工智能助手</title>
+  <link rel="stylesheet" href="/static/style.css?v=20261015c">
+  <script>
+    // 初始化一旦失败，就把原因直接显示在页面顶部，避免用户只看到一片空白。
+    window.addEventListener("error", function (event) {
+      var box = document.getElementById("boot-error");
+      if (!box) return;
+      var target = event.target || {};
+      var detail =
+        event.message ||
+        (target.src || target.href
+          ? "资源加载失败 " + (target.src || target.href)
+          : "未知脚本错误");
+      box.hidden = false;
+      box.textContent = "页面初始化失败：" + detail;
+    }, true);
+  </script>
+</head>
+<body>
+  <div id="boot-error" class="boot-error" hidden></div>
+  <main class="app-shell">
+    <section id="login-view" class="login-view" aria-labelledby="login-title">
+      <div class="brand-mark" aria-hidden="true">AI</div>
+      <p class="eyebrow">MULTI-AGENT WORKSPACE</p>
+      <h1 id="login-title">新员工智能助手</h1>
+      <p class="subtitle">连接企业知识与业务服务，让入职问题更快得到答案。</p>
+      <form id="login-form" class="login-form" novalidate>
+        <label for="username">教学账号</label>
+        <input id="username" name="username" type="text" maxlength="50" placeholder="请输入用户名" autocomplete="username" required>
+        <label for="password">密码</label>
+        <input id="password" name="password" type="password" placeholder="请输入密码" autocomplete="current-password" required>
+        <p id="login-error" class="form-error" role="alert" aria-live="polite"></p>
+        <button id="login-button" class="primary-button" type="submit">登录</button>
+      </form>
+      <div class="account-hint">
+        <span>教学账号</span>
+        <button class="account-chip" type="button" data-username="zhang_wei">zhang_wei</button>
+        <button class="account-chip" type="button" data-username="wang_fang">wang_fang</button>
+      </div>
+    </section>
+
+    <section id="chat-view" class="chat-view" aria-labelledby="chat-title" hidden>
+      <header class="chat-header">
+        <div class="brand-compact">
+          <span class="brand-mark small" aria-hidden="true">AI</span>
+          <div>
+            <p class="eyebrow">EMPLOYEE ASSISTANT</p>
+            <h1 id="chat-title">新员工智能助手</h1>
+          </div>
+        </div>
+        <div class="user-panel">
+          <div class="user-meta">
+            <strong id="display-name"></strong>
+            <div class="user-details">
+              <span>用户名：<b id="user-username"></b></span>
+              <span>部门：<b id="user-department"></b></span>
+              <span>角色：<b id="user-role"></b></span>
+            </div>
+          </div>
+          <button id="logout-button" class="secondary-button" type="button">退出登录</button>
+        </div>
+      </header>
+      <div class="chat-workspace">
+        <aside class="thread-sidebar" aria-labelledby="thread-list-title">
+          <div class="thread-sidebar-header">
+            <h2 id="thread-list-title">我的会话</h2>
+            <button id="new-thread-button" class="new-thread-button" type="button">＋ 新建会话</button>
+          </div>
+          <p id="thread-error" class="thread-error" role="alert" aria-live="polite"></p>
+          <div id="thread-list" class="thread-list"></div>
+          <p id="thread-empty" class="thread-empty" hidden>暂无会话，点击上方按钮创建一个新会话。</p>
+        </aside>
+
+        <section class="conversation-pane" aria-labelledby="conversation-title">
+          <div class="conversation-header">
+            <div>
+              <p class="conversation-label">当前会话</p>
+              <h2 id="conversation-title">请选择一个会话</h2>
+            </div>
+          </div>
+          <div id="message-list" class="message-list" role="log" aria-live="polite" aria-relevant="additions">
+            <div class="welcome-card">
+              <span class="welcome-icon" aria-hidden="true">✦</span>
+              <div>
+                <strong>你好，我是新员工智能助手</strong>
+                <p>你可以询问公司制度、部门信息、办公设备申请等问题。</p>
+              </div>
+            </div>
+          </div>
+          <p id="chat-error" class="chat-error" role="alert" aria-live="assertive"></p>
+          <form id="chat-form" class="composer" novalidate>
+            <label class="sr-only" for="message-input">输入消息</label>
+            <textarea id="message-input" name="message" rows="1" maxlength="2000" placeholder="输入问题，Enter 发送，Shift + Enter 换行" required></textarea>
+            <button id="send-button" class="send-button" type="submit" aria-label="发送消息">
+              <span>发送</span><span aria-hidden="true">↑</span>
+            </button>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script src="/static/index.js?v=20261015c" defer></script>
+</body>
+</html>
